@@ -89,3 +89,28 @@ String json = objectMapper.writeValueAsString(user);
 User userObj = objectMapper.readValue(json, User.class);
 ```
 ---
+
+## 🗂️ Spring Data JPA & JpaRepository 
+
+Spring Data JPA is a part of the **Spring Data** family. It simplifies working with JPA (Java Persistence API) by **removing boilerplate code** for database operations.
+
+---
+
+### 📘 What is Spring Data JPA?
+
+- Abstraction layer on top of **JPA + Hibernate**
+- Automatically implements repository methods at runtime
+- Integrates with **Spring Boot**, **Hibernate**, and **JPA Providers**
+
+---
+
+### 📦 Key Benefits
+
+| Feature                        | Description                                                   |
+|--------------------------------|---------------------------------------------------------------|
+| No boilerplate                 | Eliminates need for common CRUD implementation                |
+| Auto query generation          | Methods can be created by following naming conventions         |
+| Pagination and sorting support| Built-in via interfaces like `PagingAndSortingRepository`      |
+| JPQL/Native queries            | Supports `@Query`, `@NamedQuery`, and native SQL              |
+
+---
