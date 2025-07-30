@@ -43,3 +43,49 @@ public class UserService {
 ```
 
 ---
+
+## 🛠️ `ObjectMapper` (Spring + Jackson Revision Notes)
+
+`ObjectMapper` is a class provided by the **Jackson** library, commonly used in Spring Boot to **convert between Java objects and JSON**.
+
+---
+
+### 🎯 Purpose
+
+- Serialize: Convert **Java object → JSON string**
+- Deserialize: Convert **JSON string → Java object**
+- Helps in reading/writing JSON data in REST APIs
+
+---
+
+### 📦 Class Info
+
+| Detail              | Value                          |
+|---------------------|---------------------------------|
+| Class Name          | `com.fasterxml.jackson.databind.ObjectMapper` |
+| Library             | Jackson (comes by default with Spring Boot) |
+| Scope               | Can be used anywhere (Controller, Service, etc.) |
+
+---
+
+### 🔄 Common Use Cases
+
+| Use Case                 | Method Example                               |
+|--------------------------|----------------------------------------------|
+| Java → JSON              | `writeValueAsString(object)`                 |
+| JSON → Java              | `readValue(jsonString, Class.class)`         |
+| JSON File → Java         | `readValue(new File("data.json"), Class.class)` |
+| Pretty Print             | `writerWithDefaultPrettyPrinter().writeValueAsString(obj)` |
+
+---
+
+### 🧱 Example
+
+```java
+@Autowired
+private ObjectMapper objectMapper;
+
+String json = objectMapper.writeValueAsString(user);
+User userObj = objectMapper.readValue(json, User.class);
+```
+---
