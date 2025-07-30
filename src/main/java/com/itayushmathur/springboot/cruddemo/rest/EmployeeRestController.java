@@ -47,11 +47,17 @@ public class EmployeeRestController {
     }
 
     @DeleteMapping("/employees/{employeeId}")
-    public void deleteEmployee(@PathVariable int employeeId) {
-        Employee theEmployee = employeeService.deleteById(employeeId);
+    public String deleteEmployee(@PathVariable int employeeId) {
+        Employee tempEmployee = employeeService.findById(employeeId);
+
+        if (tempEmployee == null) {
+            throw new RuntimeException("Employee id not fund!");
+        }
+        employeeService.deleteById(employeeId);
+        return "Deleted Successfully";
     }
 
-    @PatchMapping("employees/{employeeId}")
+    @PatchMapping("/employees/{employeeId}")
     public Employee patchEmployee(@PathVariable int employeeId, @RequestBody Map<String, Object> patchPayload) {
         Employee tempEmployee = employeeService.findById(employeeId);
         if (tempEmployee == null) {
